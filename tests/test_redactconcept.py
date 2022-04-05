@@ -2,11 +2,11 @@ import glob
 import sys
 from project1 import redactormain
 import argparse
-path = "..\\cs5293p2r-project1\\docs\\*.txt"
+path = "..\\cs5293sp22-project1\\docs\\*.txt"
 def test_redactconcept():
     parser = argparse.ArgumentParser()
     parser.add_argument("--concept", type=str, required=False, action="append", metavar='value', help="Input all text files")
-    args = parser.parse_args("--concept ../cs5293p2r-project1/docs/*.txt".split())
+    args = parser.parse_args("--concept ../cs5293sp22-project1/docs/*.txt".split())
     li = []
     xyz = glob.glob(str(args))
     for file in xyz:

@@ -1,6 +1,6 @@
 import glob
 from project1 import redactormain
-path = "..\\cs5293p2r-project1\\docs\\*.txt"
+path = "..\\cs5293sp22-project1\\docs\\*.txt"
 def test_redactdates():
     li = []
     data = glob.glob(path)
