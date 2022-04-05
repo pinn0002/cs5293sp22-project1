@@ -1,0 +1,13 @@
+geeksforgeeks | https://www.geeksforgeeks.org/how-to-read-multiple-text-files-from-folder-in-python/ | helped with understanding in reading multiple text files
+idkrtm | https://www.idkrtm.com/error-handling-in-python-using-with-and-try/ | Helped in understanding how to raise exceptions if there are any issues with opening and reading text files
+appdividend | https://appdividend.com/2021/07/03/how-to-create-directory-if-not-exist-in-python/#:~:text=To%20create%20a%20directory%20if,makedirs()%20method. | Helped in understanding  checking the existence of directory
+nltk | https://www.nltk.org/ | Helped with understanding nltk tokenization, tagging and identifying named entities
+stack overflow | https://stackoverflow.com/questions/31836058/nltk-named-entity-recognition-to-a-python-list | helped with named entity recognition using nltk
+holisticseo | https://www.holisticseo.digital/python-seo/nltk/wordnet | helped in understanding the process of extracting synonyms using wordnet
+stackoverflow | https://stackoverflow.com/questions/30003957/error-when-accessing-synonyms-in-python-using-nltk | helped with getting synonyms
+softhints | https://softhints.com/python-change-directory-parent/ | helped with getting names of files
+stackoverflow | https://stackoverflow.com/questions/8024248/telling-python-to-save-a-txt-file-to-a-certain-directory-on-windows-and-mac | Helped in understanding creation of .redacted file for storing redacted output
+stackoverlow | https://stackoverflow.com/questions/5512811/builtins-typeerror-must-be-str-not-bytes | helped with understanding opening mode when block characters exists in our text file
+stackoverflow | https://stackoverflow.com/questions/6048085/writing-unicode-text-to-a-text-file | helped with understanding file encoding
+python | https://docs.python.org/3/library/argparse.html#:~:text=Adding%20arguments,-Filling%20an%20ArgumentParser&text=Later%2C%20calling%20parse_args()%20will,function%20if%20it%20was%20not. | Helped with understanding actions of add_argument using argparse
+askpython | https://www.askpython.com/python/python-stdin-stdout-stderr | Helped with understanding stdout, stderr
