@@ -1,36 +1,42 @@
 *************Update stats of names***********
-Total number of names redacted in 243 is 24
-Total number of names redacted in 3 is 5
-Total number of names redacted in 50 is 83
-Total number of names redacted in 52 is 16
-Total number of names redacted in all files is 128
+Total number of names redacted in 243 is 34
+Total number of names redacted in 3 is 9
+Total number of names redacted in 50 is 143
+Total number of names redacted in 52 is 49
+Total number of names redacted in sample is 8
+Total number of names redacted in all files is 243
 *************Update stats of genders***********
 Total number of genders redacted in 243 is 3
 Total number of genders redacted in 3 is 0
 Total number of genders redacted in 50 is 0
 Total number of genders redacted in 52 is 0
+Total number of genders redacted in sample is 0
 Total number of genders redacted in all files is 3
 *************Update stats of dates***********
 Total number of dates redacted in 243 is 6
 Total number of dates redacted in 3 is 2
 Total number of dates redacted in 50 is 3
 Total number of dates redacted in 52 is 3
+Total number of dates redacted in sample is 0
 Total number of dates redacted in all files is 14
 *************Update stats of phones***********
 Total number of phones redacted in 243 is 3
 Total number of phones redacted in 3 is 0
 Total number of phones redacted in 50 is 2
 Total number of phones redacted in 52 is 3
+Total number of phones redacted in sample is 0
 Total number of phones redacted in all files is 8
 *************Update stats of address***********
 Total number of address redacted in 243 is 0
 Total number of address redacted in 3 is 0
 Total number of address redacted in 50 is 1
 Total number of address redacted in 52 is 1
-Total number of address redacted in all files is 2
+Total number of address redacted in sample is 7
+Total number of address redacted in all files is 9
 *************Update stats of concept***********
-Total number of concept redacted in 243 file is 0
-Total number of concept redacted in 3 file is 0
-Total number of concept redacted in 50 file is 0
+Total number of concept redacted in 243 file is 1
+Total number of concept redacted in 3 file is 1
+Total number of concept redacted in 50 file is 1
 Total number of concept redacted in 52 file is 0
-Total number of sentences redacted related to concept in all files is 0
+Total number of concept redacted in sample file is 0
+Total number of sentences redacted related to concept in all files is 3

@@ -7,6 +7,9 @@ name = "pypi"
 nltk = "*"
 numpy = "*"
 pytest = "*"
+usaddress = "*"
+commonregex = "*"
+locationtagger = "*"
 
 [dev-packages]
 
