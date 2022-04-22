@@ -13,8 +13,7 @@ from nltk import word_tokenize, ne_chunk, pos_tag,sent_tokenize
 from nltk.corpus import wordnet
 from pathlib import Path
 from nltk.tree import Tree
-import usaddress
-from commonregex import CommonRegex
+
 
 def fetchtextdata(input_files):
     #creating a list to store the contents of all text files
@@ -30,55 +29,16 @@ def fetchtextdata(input_files):
             except:
                 print('File cannot be read:' + file)
     return li
-""" 
-def redactnames(text_data):
-        maskeddata = []
-        for name in text_data:
-            # to get nltk.tree.Tree object to traverse the tree
-            namedentities = nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(name)))
-            nameslist = []
-            for entity in namedentities:
-                #checking if tree has attribute label
-                if hasattr(entity,'label'):
-                    #checking if label is PERSON then appending token
-                    if entity.label() == "PERSON":
-                        nameslist.append(" ".join([token for token, pos in entity.leaves()]))
-            print(nameslist)
-            for person in nameslist:
-                #hide names in textfiles
-                name = name.replace(person,'\u2588'*len(person))
-            maskeddata.append(name)
-        return maskeddata
-
 def redactnames(text_data):
     maskeddata = []
     for name in text_data:
         # to get nltk.tree.Tree object to traverse the tree
         namedentities = nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(name)))
         nameslist = []
-        for entity in namedentities:
-            if type(entity) == Tree:
-                for token in entity.leaves():
-                    if token[0] not in nameslist:
-                        nameslist.append(token[0])
-        print(nameslist)
-        for person in nameslist:
-            # hide names in textfiles
-            name = name.replace(person, '\u2588' * len(person))
-        maskeddata.append(name)
-    return maskeddata
-"""
-def redactnames(text_data):
-    maskeddata = []
-    for name in text_data:
-        # to get nltk.tree.Tree object to traverse the tree
-        namedentities = nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(name)))
-        nameslist = []
-        for entity in namedentities.subtrees(filter=lambda t: t.label() == "PERSON"):
+        for entity in namedentities.subtrees(filter=lambda t: t.label() == 'PERSON'):
             for leaf in entity.leaves():
                 if leaf[0] not in nameslist:
                     nameslist.append(leaf[0])
-        #print(nameslist)
         for person in nameslist:
             # hide names in textfiles
             name = name.replace(person, '\u2588' * len(person))
@@ -86,21 +46,7 @@ def redactnames(text_data):
     return maskeddata
 
 def redactgenders(text_data):
-    genderentity1 = ['father','mother','daddy','mummy','businessman','businesswoman','she','he','him','her','Mr.','Ms.','his','hers','son','daughter','sister','brother','woman','man','men','women','sir','madam','king','queen','uncle','aunt','nephew','niece','husband','wife','lord','lady','himself','herself','dad','mom','grandfather','grandmother','grandson','granddaughter','boy','girl','boys','girls','boyfriend','girlfriend','hero','heroine','gentleman','gentlemen','emperor','empress']
-    genderentity2 = ['effeminate', 'effete', 'fertile', 'gender', 'gynic', 'womanhood', 'womanish', 'womanliness', 'brand','class', 'classification', 'denomination', 'gender', 'kin', 'lot', 'order', 'persuasion', 'race', 'set','sort', 'species', 'variety', 'andric', 'gender', 'macho', 'male', 'manful', 'mannish', 'potent','virile', 'she', 'he', 'man', 'men', 'woman', 'boy', 'girl', 'his', 'her', 'husband', 'wife', 'son','daughter', 'mother', 'father', 'him', 'hers', 'sister', 'brother', 'uncle', 'aunt', 'nephew', 'niece','grandmother', 'grandfather', 'himself', 'herself', 'princess', 'prince', 'queen', 'king', 'She', 'He','Man', 'Men', 'Woman', 'Boy', 'Girl', 'his', 'her', 'husband', 'Wife', 'Son', 'Daughter', 'Mother','Father', 'Him', 'Her', 'Sister', 'Brother', 'Uncle', 'Aunt', ' Nephew', 'Niece', 'Grandmother','Grandfather', 'Himself', 'Herself', 'Princess', 'Prince', 'Queen', 'King','babe','bae','She','He','Her']
-    genderentity =  ['father', 'mother', 'son', 'him', 'her', 'his', 'he', 'she', 'his', 'hers', 'himself', 'herself',
-                    'daughter', 'brother', 'sister',
-                    'uncle', 'aunt', 'husband', 'wife', 'prince', 'princess', 'father-in-law', 'mother-in-law',
-                    'son-in-law', 'daughter-in-law',
-                    'brother-in-law', 'sister-in-law', 'stepfather', 'stepmother', 'stepson', 'stepbrother',
-                    'stepsister', 'stepdaughter',
-                    'half brother', 'half sister', 'grandson', 'girl', 'boy', 'granddaughter', 'man', 'woman', 'actor',
-                    'actress', 'sir',
-                    'madam', 'waitress', 'waiter', 'ladies', 'gentlemen', 'boyfriend', 'girlfriend', 'salesman',
-                    'saleswoman', 'nephew', 'niece',
-                    'king', 'queen', 'bridegroom', 'bride', 'businessman', 'businesswoman', 'chairman', 'chairwoman',
-                    'dad', 'mom', 'god', 'goddess',
-                    'hero', 'heroine', 'bull', 'cow', 'babe', 'bae']
+    genderentity = ['father','mother','daddy','mummy','businessman','businesswoman','she','he','him','her','hers','Mr.','Ms.','his','hers','son','daughter','sister','brother','woman','man','men','women','sir','madam','king','queen','uncle','aunt','nephew','niece','husband','wife','lord','lady','himself','herself','dad','mom','grandfather','grandmother','grandson','granddaughter','boy','girl','boys','girls','boyfriend','girlfriend','hero','heroine','gentleman','gentlemen','emperor','empress','waiter','waitress','son-in-law','father-in-law','mother-in-law','daughter-in-law','prince','princess','actor','actress','businessman','businesswoman','businessmen','businesswomen','god','goddess','bride','groom','bridegroom','ladies','gents','gent']
     maskedgender = []
     for gender in text_data:
         tokenizeword = nltk.word_tokenize(gender)
@@ -200,7 +146,7 @@ def redactaddress(text_data):
     maskedaddress = []
     for word in text_data:
         addresspatterns = []
-        matchaddress = re.findall(r'([0-9]{3,4}\s.+,\s.+,\s[A-Z]{2}(?:\s[0-9]{5}|\s))',word)
+        matchaddress = re.findall(r'([0-9]{3,4}\s.+,\s.+,\s[A-Z]{2}(?:\s[0-9]{5}|\s))', word)
         for element in matchaddress:
             if element not in addresspatterns:
                 addresspatterns.append(element)
@@ -216,71 +162,12 @@ def redactaddress(text_data):
         for element in matchaddress3:
             if element not in addresspatterns:
                 addresspatterns.append(element)
-        # matchaddress3 = re.findall(r'([0-9]{3,4}.+\n.+,\s[A-Z]{2})', word)
-        # for element in matchaddress3:
-        #     if element not in addresspatterns:
-        #         addresspatterns.append(element)
-        print(addresspatterns)
         for pattern in addresspatterns:
-            print(len(pattern))
-            word = word.replace(pattern,'\u2588'*len(pattern))
-        maskedaddress.append(word)
-    return maskedaddress
-"""
-def redactaddress(text_data):
-    maskedaddress = []
-    loc = ''
-    for word in text_data:
-        addresspatterns = []
-        parseaddress = CommonRegex(word)
-        st_address = parseaddress.street_addresses
-        words = nltk.word_tokenize(word)
-        tags = nltk.pos_tag(words)
-        ner = nltk.ne_chunk(tags, binary=False)
-        for subtree in ner.subtrees():
-            if subtree.label() == 'GPE':
-                l = []
-                for leaf in subtree.leaves():
-                    l.append(leaf[0])
-                loc = ''.join(l)
-                if loc not in addresspatterns:
-                    addresspatterns.append(loc)
-        addresspatterns.extend(st_address)
-        print(addresspatterns)
-        for pattern in addresspatterns:
+            print(pattern, len(pattern))
             word = word.replace(pattern,'\u2588'*len(pattern))
         maskedaddress.append(word)
     return maskedaddress
 
-def redactaddress(text_data):
-    maskedaddress = []
-    c_address = []
-    for word in text_data:
-        addresses = []
-        addresspatterns = []
-        for address in usaddress.parse(word):
-            if address[1] == 'AddressNumber' or address[1] == 'StreetName' or address[1] == 'StreetNamePostType' or address[1] == 'PlaceName' or address[1] == 'StateName' or address[1] == 'ZipCode':
-                addresses.append(address[0])
-    for word in text_data:
-        comb_sentences = []
-        for sentence in sent_tokenize(word):
-            c_sentences = []
-            word_sentences = word_tokenize(sentence)
-            for eachword in word_sentences:
-                if(eachword in addresses):
-                    c_sentences.append('\u2588')
-                else:
-                    c_sentences.append(eachword)
-            newsentence = ''.join([str(i) for i in c_sentences])
-            comb_sentences.append(newsentence)
-        newfile = ''.join([str(i) for i in comb_sentences])
-        addresspatterns.append(newfile)
-        print(addresspatterns)
-        # for pattern in addresspatterns:
-        #     word = word.replace(pattern,'\u2588'*len(pattern))
-        # maskedaddress.append(word)
-    return addresspatterns
-"""
 def outputredactedfiles(input_files, text_data):
     i=0
     for files in input_files.input:
@@ -456,29 +343,3 @@ def redactedstats(input_files,text_stat):
     except:
         statsfile.write("Exception Occurred!\n")
     statsfile.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

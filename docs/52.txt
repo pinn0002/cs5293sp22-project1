@@ -76,7 +76,7 @@ Hours: Mon-Sun: 5:30am-1:30am
 
 Pickup Date: Friday, September 07, 2001
 Pickup Time: 5:30 PM
-
+children
 Drop-off Location: Atlanta Intl Airport, GA
 Drop-off Date:     Sunday, September 09, 2001
 Drop-off Time:     12:00 PM
